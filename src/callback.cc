@@ -1,27 +1,30 @@
 #include <v8.h>
 #include <node.h>
+#include <nan.h>
 using namespace v8;
 using namespace node;
 
-void CallFuncViaCall(const FunctionCallbackInfo<Value>& args) {
-  Isolate* isolate = Isolate::GetCurrent();
-  HandleScope scope(isolate);
+NAN_METHOD(CallFuncViaCall) {
+  NanScope();
 
   printf("%s: START\n", __func__);
   Local<Object> obj = Local<Object>::Cast(args[0]);
-  Local<Function> cb = obj->Get(String::NewFromUtf8(isolate, "cb")).As<Function>();
+  Local<Function> cb = obj->Get(NanNew("cb")).As<Function>();
   cb->Call(obj, 0, NULL);
   printf("%s: END\n", __func__);
+  
+  NanReturnUndefined();
 }
 
-void CallFuncViaMakeCallback(const FunctionCallbackInfo<Value>& args) {
-  Isolate* isolate = Isolate::GetCurrent();
-  HandleScope scope(isolate);
+NAN_METHOD(CallFuncViaMakeCallback) {
+  NanScope();
 
   printf("%s: START\n", __func__);
   Local<Object> obj = Local<Object>::Cast(args[0]);
-  MakeCallback(isolate, obj, "cb", 0, NULL);
+  NanMakeCallback(obj, "cb", 0, NULL);
   printf("%s: END\n", __func__);
+  
+  NanReturnUndefined();
 }
 
 void InitAll(Handle<Object> exports, Handle<Object> module) {
