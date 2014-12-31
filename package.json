@@ -1,0 +1,20 @@
+{
+  "name": "node-native-callback-test",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "Roman Khmelichek",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rkhmelichek/node-native-callback-test.git"
+  },
+  "dependencies": {
+    "nan": "^1.3.0",
+    "nad-bindings": "rkhmelichek/nad-bindings"
+  },
+  "gypfile": true,
+  "engine": {
+    "node": ">=0.11.14"
+  }
+}
