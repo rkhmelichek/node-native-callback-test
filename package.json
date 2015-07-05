@@ -10,8 +10,8 @@
     "url": "git://github.com/rkhmelichek/node-native-callback-test.git"
   },
   "dependencies": {
-    "nan": "^1.3.0",
-    "nad-bindings": "^0.2.0"
+    "nad-bindings": "^0.2.0",
+    "nan": "^1.8.4"
   },
   "gypfile": true,
   "engine": {
